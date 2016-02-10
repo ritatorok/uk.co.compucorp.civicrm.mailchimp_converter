@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<extension key="uk.co.compucorp.civicrm.tpg.mailchimp" type="module">
-  <file>mailchimp</file>
+<extension key="uk.co.compucorp.civicrm.mailchimp_converter" type="module">
+  <file>mailchimp_converter</file>
   <name>FIXME</name>
   <description>FIXME</description>
   <license>AGPL-3.0</license>
@@ -22,6 +22,6 @@
   </compatibility>
   <comments>This is a new, undeveloped module</comments>
   <civix>
-    <namespace>CRM/Mailchimp</namespace>
+    <namespace>CRM/MailchimpConverter</namespace>
   </civix>
 </extension>

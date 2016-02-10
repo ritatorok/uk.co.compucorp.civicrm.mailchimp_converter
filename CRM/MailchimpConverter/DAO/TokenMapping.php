@@ -1,6 +1,6 @@
 <?php
 
-class CRM_Mailchimp_DAO_TokenMapping extends CRM_Core_DAO
+class CRM_MailchimpConverter_DAO_TokenMapping extends CRM_Core_DAO
 {
 
   /**

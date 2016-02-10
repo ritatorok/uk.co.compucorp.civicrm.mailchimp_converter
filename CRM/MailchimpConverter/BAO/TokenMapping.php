@@ -1,6 +1,6 @@
 <?php
 
-class CRM_Mailchimp_BAO_TokenMapping extends CRM_Mailchimp_DAO_TokenMapping {
+class CRM_MailchimpConverter_BAO_TokenMapping extends CRM_MailchimpConverter_DAO_TokenMapping {
   public function findAll($asMap = false) {
     $tokenMappings = array();
     $bao = new static();

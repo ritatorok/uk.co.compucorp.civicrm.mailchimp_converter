@@ -5,7 +5,7 @@
 /**
  * Base class which provides helpers to execute upgrade logic
  */
-class CRM_Mailchimp_Upgrader_Base {
+class CRM_MailchimpConverter_Upgrader_Base {
 
   /**
    * @var varies, subclass of ttis
@@ -38,7 +38,7 @@ class CRM_Mailchimp_Upgrader_Base {
   static public function instance() {
     if (! self::$instance) {
       // FIXME auto-generate
-      self::$instance = new CRM_Mailchimp_Upgrader(
+      self::$instance = new CRM_MailchimpConverter_Upgrader(
         'uk.co.compucorp.civicrm.tpg.mailchimp',
         realpath(__DIR__ .'/../../../')
       );

@@ -7,7 +7,7 @@ require_once 'CRM/Core/Form.php';
  *
  * @see http://wiki.civicrm.org/confluence/display/CRMDOC43/QuickForm+Reference
  */
-class CRM_Mailchimp_Form_CreateTokenMapping extends CRM_Core_Form {
+class CRM_MailchimpConverter_Form_CreateTokenMapping extends CRM_Core_Form {
   function buildQuickForm() {
     $this->add('text', 'mailchimp_token', 'Mailchimp Token', '', true);
     $this->add('text', 'civicrm_token', 'CiviCRM Token', '', true);
@@ -27,7 +27,7 @@ class CRM_Mailchimp_Form_CreateTokenMapping extends CRM_Core_Form {
   function postProcess() {
     $values = $this->exportValues();
 
-    $mapping = new CRM_Mailchimp_BAO_TokenMapping();
+    $mapping = new CRM_MailchimpConverter_BAO_TokenMapping();
     $mapping->civicrm_token = $values['civicrm_token'];
     $mapping->mailchimp_token = $values['mailchimp_token'];
     $mapping->save();

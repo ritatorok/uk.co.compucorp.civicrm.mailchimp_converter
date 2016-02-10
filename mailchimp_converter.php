@@ -1,14 +1,14 @@
 <?php
 
-require_once 'mailchimp.civix.php';
+require_once 'mailchimp_converter.civix.php';
 
 /**
  * Implements hook_civicrm_config().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
  */
-function mailchimp_civicrm_config(&$config) {
-  _mailchimp_civix_civicrm_config($config);
+function mailchimp_converter_civicrm_config(&$config) {
+  _mailchimp_converter_civix_civicrm_config($config);
 }
 
 /**
@@ -18,8 +18,8 @@ function mailchimp_civicrm_config(&$config) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
  */
-function mailchimp_civicrm_xmlMenu(&$files) {
-  _mailchimp_civix_civicrm_xmlMenu($files);
+function mailchimp_converter_civicrm_xmlMenu(&$files) {
+  _mailchimp_converter_civix_civicrm_xmlMenu($files);
 }
 
 /**
@@ -27,8 +27,8 @@ function mailchimp_civicrm_xmlMenu(&$files) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
-function mailchimp_civicrm_install() {
-  _mailchimp_civix_civicrm_install();
+function mailchimp_converter_civicrm_install() {
+  _mailchimp_converter_civix_civicrm_install();
 }
 
 /**
@@ -36,8 +36,8 @@ function mailchimp_civicrm_install() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
-function mailchimp_civicrm_uninstall() {
-  _mailchimp_civix_civicrm_uninstall();
+function mailchimp_converter_civicrm_uninstall() {
+  _mailchimp_converter_civix_civicrm_uninstall();
 }
 
 /**
@@ -45,8 +45,8 @@ function mailchimp_civicrm_uninstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
-function mailchimp_civicrm_enable() {
-  _mailchimp_civix_civicrm_enable();
+function mailchimp_converter_civicrm_enable() {
+  _mailchimp_converter_civix_civicrm_enable();
 }
 
 /**
@@ -54,8 +54,8 @@ function mailchimp_civicrm_enable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
  */
-function mailchimp_civicrm_disable() {
-  _mailchimp_civix_civicrm_disable();
+function mailchimp_converter_civicrm_disable() {
+  _mailchimp_converter_civix_civicrm_disable();
 }
 
 /**
@@ -70,8 +70,8 @@ function mailchimp_civicrm_disable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
-function mailchimp_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  return _mailchimp_civix_civicrm_upgrade($op, $queue);
+function mailchimp_converter_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
+  return _mailchimp_converter_civix_civicrm_upgrade($op, $queue);
 }
 
 /**
@@ -82,8 +82,8 @@ function mailchimp_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
  */
-function mailchimp_civicrm_managed(&$entities) {
-  _mailchimp_civix_civicrm_managed($entities);
+function mailchimp_converter_civicrm_managed(&$entities) {
+  _mailchimp_converter_civix_civicrm_managed($entities);
 }
 
 /**
@@ -95,8 +95,8 @@ function mailchimp_civicrm_managed(&$entities) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function mailchimp_civicrm_caseTypes(&$caseTypes) {
-  _mailchimp_civix_civicrm_caseTypes($caseTypes);
+function mailchimp_converter_civicrm_caseTypes(&$caseTypes) {
+  _mailchimp_converter_civix_civicrm_caseTypes($caseTypes);
 }
 
 /**
@@ -109,8 +109,8 @@ function mailchimp_civicrm_caseTypes(&$caseTypes) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function mailchimp_civicrm_angularModules(&$angularModules) {
-_mailchimp_civix_civicrm_angularModules($angularModules);
+function mailchimp_converter_civicrm_angularModules(&$angularModules) {
+_mailchimp_converter_civix_civicrm_angularModules($angularModules);
 }
 
 /**
@@ -118,11 +118,11 @@ _mailchimp_civix_civicrm_angularModules($angularModules);
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
  */
-function mailchimp_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
-  _mailchimp_civix_civicrm_alterSettingsFolders($metaDataFolders);
+function mailchimp_converter_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
+  _mailchimp_converter_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
-function mailchimp_civicrm_navigationMenu(&$params) {
+function mailchimp_converter_civicrm_navigationMenu(&$params) {
   $navId = CRM_Core_DAO::singleValueQuery("SELECT max(id) FROM civicrm_navigation");
 
   if (is_integer($navId)) {
@@ -130,18 +130,6 @@ function mailchimp_civicrm_navigationMenu(&$params) {
   }
   // Find the Report menu
   $reportID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'Mailings', 'id', 'name');
-  $params[$reportID]['child'][$navId] = array (
-    'attributes' => array (
-      'label' => ts('Manage Mailchimp token mappings'),
-      'name' => 'Mailchimp token mappings',
-      'url' => 'civicrm/mailchimp/token-mappings',
-      'separator' => 0,
-      'parentID' => $reportID,
-      'navID' => $navId,
-      'active' => 1
-    )
-  );
-  $navId++;
   $params[$reportID]['child'][$navId] = array (
     'attributes' => array (
       'label' => ts('Convert Mailchimp mailing'),
@@ -152,6 +140,22 @@ function mailchimp_civicrm_navigationMenu(&$params) {
       'navID' => $navId,
       'active' => 1
     )
+  );
+
+  $administerId = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'Administer', 'id', 'name');
+  $civimailId = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'CiviMail', 'id', 'name');
+  $navId++;
+  $params[$administerId]['child'][$civimailId]['child'][$navId] = array (
+    'attributes' => array (
+      'label' => ts('Manage Mailchimp token mappings'),
+      'name' => 'Mailchimp token mappings',
+      'url' => 'civicrm/mailchimp/token-mappings',
+      'separator' => 0,
+      'parentID' => $civimailId,
+      'navID' => $navId,
+      'active' => 1
+    ),
+    'child' => NULL
   );
 }
 
@@ -164,7 +168,7 @@ function mailchimp_civicrm_navigationMenu(&$params) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
  *
-function mailchimp_civicrm_preProcess($formName, &$form) {
+function mailchimp_converter_civicrm_preProcess($formName, &$form) {
 
 }
 
