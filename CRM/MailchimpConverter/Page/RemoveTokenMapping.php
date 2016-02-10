@@ -2,11 +2,11 @@
 
 require_once 'CRM/Core/Page.php';
 
-class CRM_Mailchimp_Page_RemoveTokenMapping extends CRM_Core_Page {
+class CRM_MailchimpConverter_Page_RemoveTokenMapping extends CRM_Core_Page {
   function run() {
     $id = CRM_Utils_Request::retrieve('mid', 'Positive');
 
-    $bao = new CRM_Mailchimp_BAO_TokenMapping();
+    $bao = new CRM_MailchimpConverter_BAO_TokenMapping();
     $bao->id = $id;
     $bao->delete();
 

@@ -1,10 +1,10 @@
 <?php
 
-class CRM_Mailchimp_TagConverter {
+class CRM_MailchimpConverter_TagConverter {
   private $tagMap;
 
   public function __construct() {
-    $bao = new CRM_Mailchimp_BAO_TokenMapping();
+    $bao = new CRM_MailchimpConverter_BAO_TokenMapping();
 
     $this->tagMap = $bao->findAll(true);
   }

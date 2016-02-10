@@ -7,7 +7,7 @@ require_once 'CRM/Core/Form.php';
  *
  * @see http://wiki.civicrm.org/confluence/display/CRMDOC43/QuickForm+Reference
  */
-class CRM_Mailchimp_Form_ConvertMailing extends CRM_Core_Form {
+class CRM_MailchimpConverter_Form_ConvertMailing extends CRM_Core_Form {
   function buildQuickForm() {
     $this->add('textarea', 'original_template', 'Original template', '', true);
     $this->addButtons(array(
@@ -26,7 +26,7 @@ class CRM_Mailchimp_Form_ConvertMailing extends CRM_Core_Form {
   function postProcess() {
     $values = $this->exportValues();
 
-    $tagConverter = new CRM_Mailchimp_TagConverter();
+    $tagConverter = new CRM_MailchimpConverter_TagConverter();
     $converted = $tagConverter->convert($values['original_template']);
 
     $this->assign('convertedTemplate', $converted);
