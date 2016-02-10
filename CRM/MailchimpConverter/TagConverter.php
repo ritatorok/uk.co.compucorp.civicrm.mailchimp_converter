@@ -10,13 +10,14 @@ class CRM_MailchimpConverter_TagConverter {
   }
 
   public function convert($originalTemplate) {
-    return preg_replace_callback('#\*\|(.+?)\|\*#', function($matches) {
+    $tagMap = &$this->tagMap;
+    return preg_replace_callback('#\*\|(.+?)\|\*#', function($matches) use($tagMap) {
       $tagName = $matches[1];
-      if(!isset($this->tagMap[$tagName])) {
+      if(!isset($tagMap[$tagName])) {
         return sprintf('{%s}', $matches[1]);
       }
 
-      return sprintf('{%s}', $this->tagMap[$tagName]);
+      return sprintf('{%s}', $tagMap[$tagName]);
     }, $originalTemplate);
   }
 }
