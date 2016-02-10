@@ -132,18 +132,6 @@ function mailchimp_converter_civicrm_navigationMenu(&$params) {
   $reportID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'Mailings', 'id', 'name');
   $params[$reportID]['child'][$navId] = array (
     'attributes' => array (
-      'label' => ts('Manage Mailchimp token mappings'),
-      'name' => 'Mailchimp token mappings',
-      'url' => 'civicrm/mailchimp/token-mappings',
-      'separator' => 0,
-      'parentID' => $reportID,
-      'navID' => $navId,
-      'active' => 1
-    )
-  );
-  $navId++;
-  $params[$reportID]['child'][$navId] = array (
-    'attributes' => array (
       'label' => ts('Convert Mailchimp mailing'),
       'name' => 'Convert Mailchimp mailing',
       'url' => 'civicrm/mailchimp/convert',
@@ -152,6 +140,22 @@ function mailchimp_converter_civicrm_navigationMenu(&$params) {
       'navID' => $navId,
       'active' => 1
     )
+  );
+
+  $administerId = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'Administer', 'id', 'name');
+  $civimailId = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'CiviMail', 'id', 'name');
+  $navId++;
+  $params[$administerId]['child'][$civimailId]['child'][$navId] = array (
+    'attributes' => array (
+      'label' => ts('Manage Mailchimp token mappings'),
+      'name' => 'Mailchimp token mappings',
+      'url' => 'civicrm/mailchimp/token-mappings',
+      'separator' => 0,
+      'parentID' => $civimailId,
+      'navID' => $navId,
+      'active' => 1
+    ),
+    'child' => NULL
   );
 }
 
