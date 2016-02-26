@@ -6,7 +6,7 @@
 
 {* Help Text *}
 <div class="description">
-  {ts}Please ensure that you use the full token from Mailchimp or CiviCRM, including the token symbols (e.g. |MC_SUBJECT| or {ldelim}contact.first_name{rdelim}).{/ts}
+  {ts}Please ensure that you use the full token from Mailchimp or CiviCRM, including the token symbols (e.g. *|MC:SUBJECT|* or {ldelim}contact.first_name{rdelim}).{/ts}
 </div>
 
 {* FIELD EXAMPLE: OPTION 1 (AUTOMATIC LAYOUT) *}

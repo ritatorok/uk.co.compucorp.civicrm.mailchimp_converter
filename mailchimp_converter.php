@@ -132,8 +132,8 @@ function mailchimp_converter_civicrm_navigationMenu(&$params) {
   $reportID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'Mailings', 'id', 'name');
   $params[$reportID]['child'][$navId] = array (
     'attributes' => array (
-      'label' => ts('Convert Mailchimp mailing'),
-      'name' => 'Convert Mailchimp mailing',
+      'label' => ts('Convert Mailchimp template to CiviCRM HTML'),
+      'name' => 'Convert Mailchimp template to CiviCRM HTML',
       'url' => 'civicrm/mailchimp/convert',
       'separator' => 0,
       'parentID' => $reportID,

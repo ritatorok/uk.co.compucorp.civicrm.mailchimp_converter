@@ -9,11 +9,15 @@ require_once 'CRM/Core/Form.php';
  */
 class CRM_MailchimpConverter_Form_ConvertMailing extends CRM_Core_Form {
   function buildQuickForm() {
-    $this->add('textarea', 'original_template', 'Original template', '', true);
+    $this->add('textarea', 'original_template', 'Paste Mailchimp HTML Here: ', 
+            array('rows' => 4,
+                  'cols' => 50,
+                  'style' => 'width: 100%; height: 300px;',
+                ), true);
     $this->addButtons(array(
       array(
         'type' => 'submit',
-        'name' => ts('Submit'),
+        'name' => ts('Convert'),
         'isDefault' => TRUE,
       ),
     ));
