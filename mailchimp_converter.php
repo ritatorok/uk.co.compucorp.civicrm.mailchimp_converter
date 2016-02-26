@@ -147,8 +147,8 @@ function mailchimp_converter_civicrm_navigationMenu(&$params) {
   $navId++;
   $params[$administerId]['child'][$civimailId]['child'][$navId] = array (
     'attributes' => array (
-      'label' => ts('Manage Mailchimp token mappings'),
-      'name' => 'Mailchimp token mappings',
+      'label' => ts('Manage Mailchimp Replacements'),
+      'name' => 'Mailchimp Mailchimp Replacements',
       'url' => 'civicrm/mailchimp/token-mappings',
       'separator' => 0,
       'parentID' => $civimailId,

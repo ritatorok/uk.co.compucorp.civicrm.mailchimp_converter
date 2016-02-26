@@ -1,6 +1,3 @@
-<h3>Manage token mappings</h3>
-<a href="{crmURL p='civicrm/mailchimp/addmapping' q="reset=1"}">Add mapping</a>
-
 <table>
     <thead>
         <tr>
@@ -19,3 +16,9 @@
         {/foreach}
     </tbody>
 </table>
+<a href="{crmURL p='civicrm/mailchimp/addmapping' q="reset=1"}" class="button">
+    <span>
+        <div class="icon ui-icon-circle-plus"></div>
+        Add mapping
+    </span>
+</a>
