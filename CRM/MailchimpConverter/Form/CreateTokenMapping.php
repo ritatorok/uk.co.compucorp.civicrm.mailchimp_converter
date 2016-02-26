@@ -24,6 +24,30 @@ class CRM_MailchimpConverter_Form_CreateTokenMapping extends CRM_Core_Form {
     parent::buildQuickForm();
   }
 
+  /**
+   * adding validation rules
+   */
+  function addRules(){
+    $this->addFormRule(array('CRM_MailchimpConverter_Form_CreateTokenMapping', 'mappingFieldRules'));
+  }
+
+  /**
+   * Callback function for validation of mailchimp and civicrm token input fields
+   * @param array $values
+   * @return bool|array
+   */
+  public static function mappingFieldRules($values){
+    $errors = array();
+    if (!preg_match("#\*\|(.+?)\|\*#",$values['mailchimp_token'])) {
+      $errors['mailchimp_token'] = ts('Please enter mailchimp token between *| and |*');
+    }
+
+    if (!preg_match("#\{(.+?)\}#",$values['civicrm_token'])) {
+      $errors['civicrm_token'] = ts('Please enter civicrm token between { and }');
+    }
+   return empty($errors) ? TRUE : $errors;
+  }
+
   function postProcess() {
     $values = $this->exportValues();
 
