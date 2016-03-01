@@ -11,13 +11,7 @@ class CRM_MailchimpConverter_TagConverter {
 
   public function convert($originalTemplate) {
     $tagMap = &$this->tagMap;
-    return preg_replace_callback('#\*\|(.+?)\|\*#', function($matches) use($tagMap) {
-      $tagName = $matches[1];
-      if(!isset($tagMap[$tagName])) {
-        return sprintf('{%s}', $matches[1]);
-      }
 
-      return sprintf('{%s}', $tagMap[$tagName]);
-    }, $originalTemplate);
+    return strtr($originalTemplate, $tagMap);
   }
 }

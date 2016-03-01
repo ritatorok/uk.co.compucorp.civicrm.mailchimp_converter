@@ -24,6 +24,74 @@ class CRM_MailchimpConverter_Form_CreateTokenMapping extends CRM_Core_Form {
     parent::buildQuickForm();
   }
 
+  /**
+   * adding validation rules
+   */
+  function addRules(){
+    $this->addFormRule(array('CRM_MailchimpConverter_Form_CreateTokenMapping', 'mappingFieldRules'));
+  }
+
+  /**
+   * Callback function for validation of mailchimp and civicrm token input fields
+   * @param array $values
+   * @return bool|array
+   */
+  public static function mappingFieldRules($values){
+    $errors = array();
+    $mailchimpToken = $values['mailchimp_token'];
+    $civiToken = $values['civicrm_token'];
+    if (!preg_match("#\*\|(.+?)\|\*#", $mailchimpToken)) {
+      $errors['mailchimp_token'] = ts('Please enter mailchimp token between *| and |*');
+    }
+
+    if(!self::civiTokenExists($civiToken)) {
+     $errors['civicrm_token'] = ts("Please use a valid civicrm token.");
+    }
+
+    if (!preg_match("#\{(.+?)\}#", $civiToken)) {
+      $errors['civicrm_token'] = ts('Please enter civicrm token between { and }');
+    }
+
+   $bao = new CRM_MailchimpConverter_BAO_TokenMapping();
+   $tokenMappings = $bao->findAll(true);
+
+   if(isset($tokenMappings[$mailchimpToken])) {
+     $errors['mailchimp_token'] = ts('Mapping for this mailchimp token already exists.');
+   }
+   if(in_array($civiToken, $tokenMappings)) {
+     $errors['civicrm_token'] = ts('Mapping for this civicrm token already exists.');
+   }
+
+   return empty($errors) ? TRUE : $errors;
+  }
+
+  public static function civiTokenExists($token = "") {
+    if(!empty($token)) {
+      return in_array($token, self::getAllMailingTokens());
+    }
+
+    return false;
+  }
+
+  public static function getAllMailingTokens() {
+    $mailTokens = civicrm_api3('Mailing', 'gettokens', array(
+      'entity' => array('contact', 'mailing'),
+      'sequential' => 1,
+    ));
+
+    $allMailTokens = array();
+    foreach($mailTokens['values'] as $mailToken) {
+      $allMailTokens = array_merge($allMailTokens, $mailToken['children']);
+    }
+
+    $allTokensInSingleArray = array();
+    foreach($allMailTokens as $mailToken) {
+      $allTokensInSingleArray[] = $mailToken['id'];
+    }
+
+    return $allTokensInSingleArray;
+  }
+
   function postProcess() {
     $values = $this->exportValues();
 
