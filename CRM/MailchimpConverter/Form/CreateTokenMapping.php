@@ -44,6 +44,10 @@ class CRM_MailchimpConverter_Form_CreateTokenMapping extends CRM_Core_Form {
       $errors['mailchimp_token'] = ts('Please enter mailchimp token between *| and |*');
     }
 
+    if(!self::civiTokenExists($civiToken)) {
+     $errors['civicrm_token'] = ts("Please use a valid civicrm token.");
+    }
+
     if (!preg_match("#\{(.+?)\}#", $civiToken)) {
       $errors['civicrm_token'] = ts('Please enter civicrm token between { and }');
     }
@@ -56,10 +60,6 @@ class CRM_MailchimpConverter_Form_CreateTokenMapping extends CRM_Core_Form {
    }
    if(in_array($civiToken, $tokenMappings)) {
      $errors['civicrm_token'] = ts('Mapping for this civicrm token already exists.');
-   }
-
-   if(!self::civiTokenExists($civiToken)) {
-     $errors['civicrm_token'] = ts("Please use a valid civicrm token.");
    }
 
    return empty($errors) ? TRUE : $errors;
