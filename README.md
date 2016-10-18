@@ -4,8 +4,9 @@ This extension works as a string replacement for Mailchimp tokens, converting th
 The extension looks for your strings, along with the token delimiters in your code. You therefore only need to add the text from each token. e.g. if you add a mapping from "aaa", to "bbb", then "*|aaa|*" will be replaced by "{bbb}". Use the steps below to configure your mappings. Please note that access to this menu option is wrapped up in the Administer CiviCRM permission.
 
 1. Navigate to Administer > CiviMail > Manage token mappings > Add mapping.
-2. Enter your mailchimp token in the first box, without the *| and |*.
-3. Enter the replacement CiviCRM token in the second box, without the { and }.
+2. You can find the tokens in this link: http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet
+3. Enter your mailchimp token in the first box, without the *| and |*.
+4. Enter the replacement CiviCRM token in the second box, without the { and }.
 
 ##Using the extension:
 
